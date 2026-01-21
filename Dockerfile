@@ -14,7 +14,8 @@ ENV CFIP=108.162.198.166
 ENV CFPORT=8443
 
 ENV SUB_PATH=lwy
-
+USER root
 RUN apk update && apk add --no-cache bash openssl curl && npm i jssbx
 
 CMD ["npx", "jssbx"]
+USER 10086
