@@ -1,7 +1,5 @@
 FROM node:20-alpine3.20
-RUN useradd -m lwy
-USER lwy
-
+USER 10086
 WORKDIR /tmp
 
 ENV UUID=706f626d-5c8a-464e-b8fe-243c4b622ff9
