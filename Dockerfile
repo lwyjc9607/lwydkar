@@ -1,15 +1,20 @@
-FROM node:alpine3.20
+FROM node:20-alpine3.20
 
 WORKDIR /tmp
 
-COPY . .
+ENV UUID=706f626d-5c8a-464e-b8fe-243c4b622ff9
+ENV ARGO_DOMAIN=333.ken25.de5.net
 
-EXPOSE 3000/tcp
+ENV ARGO_AUTH=eyJhIjoiMzRlOWU4N2IzYzViODkzNmU2NjNhZjc1NTYwMmNkODMiLCJ0IjoiZTgwOTVhMWYtMjY3NC00YjdlLWE5MGEtZTBjYTlkNmI0NTk0IiwicyI6Ik1UUmpabVkwWkdNdE5URTJOQzAwTmpabUxXSXdOVEV0Wm1Wa05XSmlNV1F6TWpsbSJ9
 
-RUN apk update && apk upgrade &&\
-    apk add --no-cache openssl curl gcompat iproute2 coreutils &&\
-    apk add --no-cache bash &&\
-    chmod +x index.js &&\
-    npm install
+ENV ARGO_PORT=7860
 
-CMD ["node", "index.js"]
+ENV CFIP=108.162.198.166
+
+ENV CFPORT=8443
+
+ENV SUB_PATH=lwy
+
+RUN apk update && apk add --no-cache bash openssl curl && npm i jssbx
+
+CMD ["npx", "jssbx"]
