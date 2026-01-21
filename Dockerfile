@@ -1,4 +1,6 @@
 FROM node:20-alpine3.20
+RUN useradd -m lwy
+USER lwy
 
 WORKDIR /tmp
 
